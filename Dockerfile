@@ -139,8 +139,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends locales && \
 
    ## install r packages, bioconductor, etc ##
    ADD rpackages.R /tmp/
-   RUN R -f /tmp/rpackages.R
-
+   RUN R -f /tmp/rpackages.R && \
+   cd /tmp/ && \  
+   wget https://github.com/chrisamiller/copyCat/archive/v1.6.12.tar.gz && \
+   mv v1.6.12.tar.gz copyCat_1.6.12.tar.gz && \
+   R CMD INSTALL copyCat_1.6.12.tar.gz && \
+   cd && rm -rf /tmp/copyCat_1.6.12.tar.gz
+    
    ## Clean up
    RUN cd / && \
    rm -rf /tmp/* && \

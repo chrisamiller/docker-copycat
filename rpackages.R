@@ -1,3 +1,5 @@
 source("https://bioconductor.org/biocLite.R")
-biocLite(c("IRanges, DNAcopy, stringr"))
+biocLite("IRanges")
+biocLite("DNAcopy")
+biocLite("stringr")
 install.packages(c("foreach","doMC"))
